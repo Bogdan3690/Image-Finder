@@ -4,6 +4,7 @@ import { Searchbar } from "./Components/Searchbar/Searchbar";
 import { ImageGallery } from "./Components/ImageGallery/ImageGallery";
 import { Button } from "./Components/Button/Button";
 import { fetchImages } from "./services/api";
+import { CircleLoader } from "react-spinners";
 
 
 class App extends Component {
@@ -29,12 +30,13 @@ class App extends Component {
 
     } catch (error) {
       this.setState({
-        error: 'Oops'
+        error: 'Sorry, try again later'
       });
 
     } finally {
       this.setState({
         isLoading: false,
+
       });
     }
   }
@@ -52,6 +54,11 @@ class App extends Component {
     const { images, error, isLoading} = this.state
     return (
       <div className="App">
+        {error && <p>Oops something went wrong: {error}</p>}
+        {isLoading && <div>
+          <CircleLoader cssOverride={{display: "block", width: "42px",  margin: "0 auto" }}  color="#6366f1" speedMultiplier={1.45} />
+         <p>Loading...</p>
+         </div>}
         <Searchbar onSubmit={this.handleSubmit} />
         <ImageGallery images={images} />
         {images.length > 0 && <ImageGallery images={images} />}
