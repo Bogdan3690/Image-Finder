@@ -40,9 +40,7 @@ const images = [...this.state.images, ...fetchedImages.hits]
       this.setState({
         images: images,
         isLoadMore: images.length < fetchedImages.totalHits,
-        error: "Sorry, there is no images!",
-        
-
+        error: images.length === 0 && "Sorry, we didn't find any images for your request",
       });
     } catch (error) {
       this.setState({
@@ -79,7 +77,6 @@ const images = [...this.state.images, ...fetchedImages.hits]
     return (
       <div className="App">
         <Searchbar onSubmit={this.handleSubmit} />
-        <ImageGallery images={images} />
         {error && <p>Oops something went wrong: {error}</p>}
         {images.length > 0 && <ImageGallery images={images} />}
         <Loader loading={isLoading} />
