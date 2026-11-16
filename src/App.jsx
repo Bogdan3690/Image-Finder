@@ -14,7 +14,6 @@ class App extends Component {
     images: [],
     page: 1,
     isLoadMore: false,
-
   };
 
   componentDidMount() {
