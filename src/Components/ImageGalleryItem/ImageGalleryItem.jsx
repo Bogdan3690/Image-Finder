@@ -6,7 +6,7 @@ const scrollToElement = (elemRef, offset = 0) => {
   window.scrollTo({ top, behavior: 'smooth' });
 };
 
-export const ImageGalleryItem = ({image, isAnchor}) => {
+export const ImageGalleryItem = ({image, isAnchor}) => { 
   const itemRef = useRef(null)
   useEffect(() => {
     if (itemRef.current) {
