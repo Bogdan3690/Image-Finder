@@ -52,15 +52,13 @@ const images = [...this.state.images, ...fetchedImages.hits]
     }
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  handleSubmit = (value) => {
     this.setState({
       isLoading: true,
-      searchQuary: e.target[1].value,
+      searchQuary: value,
       images: [],
       page: 1,
     });
-    console.log(e.target[1].value);
   };
 
   handleBtnClick = () => {
